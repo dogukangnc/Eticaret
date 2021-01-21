@@ -1,21 +1,19 @@
 <template>
  <nav>
-  <div class="menu-item"><a href="#">Whats New</a></div> 
+  <div class="menu-item"><router-link to="/anasayfa">Whats New</router-link></div> 
   <Dropdown title="Men" :items="women" />
-  <Dropdown title="Women" :items="women" />  
+  <Dropdown title="Women" :items="women" />
   <div class="menu-search">      
       <input type="text" placeholder="Search..">
       <i class="fa fa-search" aria-hidden="true"></i>
   </div>
-  <div class="login"><a href="#">Giriş Yap...</a></div>
+  <div class="login"><router-link to="/giris">Giriş Yap..</router-link></div>
   
  </nav>
 </template>
 
 <script>
-
 import Dropdown from './Dropdown';
-
 export default {
   name: 'navbar',
   components: {
@@ -26,21 +24,20 @@ export default {
       women: [
         {
           title: 'Short',
-          link: '#'
+          link: '/Urunsayfa'
         },
         {
           title: 'Watches',
-          link:'#'
+          link:'/Urunsayfa'
         },
         {
           title: 'Blabla',
-          link: '#'
+          link: '/Urunsayfa'
         }
       ]
       
     }
   }
-
 }
 </script>
 <style>
@@ -48,7 +45,6 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 nav .menu-item{
     color:#FFF;
@@ -74,15 +70,11 @@ nav .menu-item.active,
 nav .menu-item:hover {
     background-color: #444;
     border-bottom-color: #FF5858;
-
-
 }
 nav .login.active,
 nav .login:hover {
     background-color: #444;
     border-bottom-color: #FF5858;
-
-
 }
 nav .menu-item a{
     color: inherit;
@@ -108,5 +100,4 @@ nav .menu-search:hover {
     
     }
     
-
 </style>

@@ -32,36 +32,29 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'Mainpage',
   components: {
    
   }
-
 }
 </script>
 <style>
-
 main{
   width:100%;
   height:100%;
-  background-color:darkgray;
+
 }
 main .firstbox{
   position: relative;
   width: 1000px;
   height: 480px;
-
 }
 main .firstbox2{
   position: relative;
   width: 100%;
   height: 480px;
-
 }
-
 main .firstbox a{
    width: 1000px;
   height: 480px;
@@ -85,8 +78,6 @@ main .firstbox2 a{
   height: 480px;
   border-radius: 50%;
 }
-
-
 .firstbox h1{
 position: absolute; 
    top: 150px; 
@@ -119,5 +110,4 @@ position: absolute;
    text-align: center;
  
 }
-
 </style>

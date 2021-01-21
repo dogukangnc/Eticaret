@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-   <header>
-  <Navbar />
-   </header>
+  <header> <Navbar /> </header>
    <main>
-     <Mainpage />
-   </main>
+   <router-view></router-view>
+  </main>
+  
+ 
    
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar';
-import Mainpage from './components/Mainpage';
+
 
 export default {
   name: 'App',
   components: {
         Navbar,
-        Mainpage
+      
   }
 }
 </script>
@@ -36,13 +36,10 @@ header{
   width:100%;
   background-color: rgb(206, 162, 162);
   padding: 25px;
-
 }
 main{
   width: 100%;
   background-color: rgb(199, 146, 146);
   
 }
-
-
 </style>
