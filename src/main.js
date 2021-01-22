@@ -12,6 +12,7 @@ const routes=[
 
  
   {path:'/anasayfa' , component: Mainpage}, 
+  {path:'/' , component: Mainpage},
   {path:'/giris' , component: Giris},
   {path:'/Urunsayfa' , component: Product},
 
