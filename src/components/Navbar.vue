@@ -1,70 +1,96 @@
 <template>
  <nav>
-  <div class="menu-item"><router-link to="/anasayfa">Whats New</router-link></div> 
-  <Dropdown title="Men" :items="women" />
-  <Dropdown title="Women" :items="women" />
+
+  <div class="menu-item"><router-link to="/anasayfa">Home Page</router-link></div> 
+
+     <div v-for="categori in categories.children_data"
+    :key="categori.id">
+   
+         <Dropdown :title="categori.name" :items="categori.children_data" />
+
+       </div> 
+    
   <div class="menu-search">      
       <input type="text" placeholder="Search..">
       <i class="fa fa-search" aria-hidden="true"></i>
   </div>
-  <div class="login"><router-link to="/giris">Giriş Yap..</router-link></div>
+  <div class="login">
+    <router-link to="/giris">Giriş Yap..</router-link></div>
   
  </nav>
 </template>
 
 <script>
 import Dropdown from './Dropdown';
+import axios from "axios";
+
+axios.defaults.headers.common['Authorization'] = 'Bearer 66xif6wjoj74y5mpyd3rslfutnyens8e';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 export default {
   name: 'navbar',
   components: {
     Dropdown
   },
+
+   created() {
+      this.getCategories();
+
+    },
+
   data () {
     return {
-      women: [
-        {
-          title: 'Short',
-          link: '/Urunsayfa'
-        },
-        {
-          title: 'Watches',
-          link:'/Urunsayfa'
-        },
-        {
-          title: 'Blabla',
-          link: '/Urunsayfa'
-        }
-      ]
-      
+     
+      categories:[],
+      errors:[],     
     }
-  }
+  },
+  methods:{
+ 
+  getCategories() {
+
+        axios
+          .get("https://store.therelated.com/rest/V1/categories")
+          .then(response => (this.categories =response.data))
+          .catch(error => {
+            this.errors.push(error);
+            console.log(this.categories);   
+
+          });
+              
+      },
+   
+    
+
+}
 }
 </script>
 <style>
 nav{
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding: 20px;
+    column-gap: 10px;
 }
+ 
 nav .menu-item{
-    color:#FFF;
-    padding: 10px 20px;
-    position: relative;
-    text-align: center;
-    border-bottom: 3px solid transparent;
-    display: flex;
-    transition: 0.4s;
+    color: #FFF;
+    padding: 10px;
     
+    transition: 0.4s;
+    border-radius: 8px;
+    background-color: #dcc1c1cc;
+    display: block;
+    float: left;
+    width: 120px;
+    margin-left: 15px;
+    display: inline-table;
 }
 nav .login{
     color:#FFF;
-    padding: 10px 20px;
-    position: absolute;
-    right: 400px;
-    text-align: center;
     border-bottom: 3px solid transparent;
-    display: flex;
     transition: 0.4s;
+    display: inline-table;
 }
 nav .menu-item.active,
 nav .menu-item:hover {
@@ -78,6 +104,7 @@ nav .login:hover {
 }
 nav .menu-item a{
     color: inherit;
+    font-weight: 600;
     text-decoration:none;
    
 }
@@ -87,8 +114,9 @@ nav .login a{
    
 }
 nav .menu-search{
-    position: absolute;
-    right: 100px;
+  width: 240px;
+  display: inline-table;
+  padding: 8px 20px;
 }
 nav .menu-search i{
     color:#FFF;
@@ -99,5 +127,9 @@ nav .menu-search:hover {
     background-color:#FF5858;
     
     }
+   .menu-search i{
+  
+     margin-left: 3px;
+   }
     
 </style>

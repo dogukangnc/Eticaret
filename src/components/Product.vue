@@ -2,17 +2,17 @@
 
 <section class="products">
  
-  <div v-for="product in products"
+  <div v-for="product in products.items"
         :key="product.id">    
          <div class= "product-card">
-        <!-- <img :src="product.image" >  -->
+        <img src="https://store.therelated.com/media/catalog/product/cache/84c53f0847035d2675c1d71de00956c9/m/j/mj04-black_main_1.jpg" > 
          <div class="product-title"> 
-           <h5>{{product.title}}</h5><!--  <li>{{product.name}}</li>  olacak..  -->
+           <h1>{{product.name}}</h1>
          </div>
          <div class="product-info">
            <ul>           
             <!--  <li>{{product.color}}</li>  -->
-            <!--  <li>{{product.price}}</li>  -->
+             <li>{{product.price}}.00$</li> 
             
            </ul>
          </div>
@@ -26,11 +26,17 @@
 <script>
 import axios from "axios";
 
+axios.defaults.headers.common['Authorization'] = 'Bearer 66xif6wjoj74y5mpyd3rslfutnyens8e';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+
+
 export default {
   name: 'Product',
 
    created() {
       this.getProduct();
+    
     },
 
   data () {
@@ -39,23 +45,28 @@ export default {
       products: [],
       errors:[]     
       };
+     
  
 },
 
 methods:{
+ 
   getProduct() {
+
         axios
-          .get("https://jsonplaceholder.typicode.com/posts")
-          .then(response => (this.products = response.data))
+          .get("https://store.therelated.com/rest/V1/products?fields=items[id,sku,name,price,visibility,custom_attributes,extension_attributes]&searchCriteria[pageSize]=100&searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=3&searchCriteria[filter_groups][0][filters][0][condition_type]=eq")
+          .then(response => (this.products =response.data))
           .catch(error => {
             this.errors.push(error);
           });
+              
       },
 
   adToCart(product){
 
     this.cart.push(product);
     console.log(this.cart);
+   
   }
 }
 
@@ -69,10 +80,16 @@ methods:{
   padding: 30px 300px;
   position: relative;
 }
+.product-card{
+  padding: 20px 20px;
+    background-color: crimson;
+    display: inline-block;
+}
 .products img{
   border-radius: 12px;
 }
  .product-info ul li{
+    display: flex;
     float: left;
     list-style-type: none;
     padding: 5px;
@@ -86,7 +103,7 @@ methods:{
   
 }
 .products button{
-
+  display: flex;
   background-color: rgb(148, 20, 20);
   font-size:15px;
   border: 2px solid black;
@@ -100,6 +117,7 @@ methods:{
   color: white;
 }
 .product-title h5{
+  display: flex;
   font-family: sans-serif;
   font-size: 16px;
   color:black;

@@ -72,11 +72,10 @@ main .firstbox2 a{
   border-radius: 50%;
 }
 .firstbox2 a img{
-  position: absolute;
-  right: 0px;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    float: right;
 }
 .firstbox h1{
 position: absolute; 

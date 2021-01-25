@@ -3,10 +3,7 @@
   <header> <Navbar /> </header>
    <main>
    <router-view></router-view>
-  </main>
-  
- 
-   
+  </main> 
   </div>
 </template>
 
@@ -33,11 +30,12 @@ body{
   font-family:'montserrat',sans-serif;
 }
 header{
-  width:100%;
-  background-color: rgb(206, 162, 162);
-  padding: 25px;
+  width: 100%;
+    background-color: rgb(206, 162, 162);
+    padding-top: 25px;
 }
 main{
+  margin-top: 20px;
   width: 100%;
   background-color: rgb(199, 146, 146);
   

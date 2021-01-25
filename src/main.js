@@ -5,16 +5,17 @@ Vue.use(VueRouter);
 
 
 import Product from './components/Product';
-import Mainpage from './components/Mainpage';
+
 import Giris from './components/Giris';
+import Women from './components/Women';
 
 const routes=[
 
- 
-  {path:'/anasayfa' , component: Mainpage}, 
-  {path:'/' , component: Mainpage},
+  {path:'/anasayfa' , component: Product}, 
+  {path:'/' , component: Product},
   {path:'/giris' , component: Giris},
   {path:'/Urunsayfa' , component: Product},
+  {path:'/Women' , component: Women},
 
 ]
   
