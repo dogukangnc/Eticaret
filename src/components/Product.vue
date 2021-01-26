@@ -1,11 +1,13 @@
 <template>
 
 <section class="products">
- 
-  <div v-for="product in products.items"
+
+
+  <div v-for="product in products.items "
         :key="product.id">    
          <div class= "product-card">
-        <img src="https://store.therelated.com/media/catalog/product/cache/84c53f0847035d2675c1d71de00956c9/m/j/mj04-black_main_1.jpg" > 
+          <img src="https://store.therelated.com/media/catalog/product/cache/84c53f0847035d2675c1d71de00956c9/m/j/mj04-black_main_1.jpg">
+        
          <div class="product-title"> 
            <h1>{{product.name}}</h1>
          </div>
@@ -33,17 +35,35 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default {
   name: 'Product',
-
+  props:['catid'],
+ 
+ 
    created() {
-      this.getProduct();
     
+      this.getProduct();
+     
+      console.log(this.catid);
     },
+
+     Updated: function () {
+      
+     
+      this.getProduct();
+    },
+     watch: { 
+   cat_id() { 
+      console.log('Data Değişti');  
+      // isOpen datasındaki değişliği yakaladık.
+   }
+  },
+   
 
   data () {
     return {
       cart: [],
       products: [],
-      errors:[]     
+      errors:[],
+      cat_id:this.catid,
       };
      
  
@@ -52,9 +72,9 @@ export default {
 methods:{
  
   getProduct() {
-
+            console.log(this.cat_id);
         axios
-          .get("https://store.therelated.com/rest/V1/products?fields=items[id,sku,name,price,visibility,custom_attributes,extension_attributes]&searchCriteria[pageSize]=100&searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=3&searchCriteria[filter_groups][0][filters][0][condition_type]=eq")
+          .get(`https://store.therelated.com/rest/V1/products?fields=items[id,sku,name,price,visibility,custom_attributes,extension_attributes]&searchCriteria[pageSize]=100&searchCriteria[filter_groups][0][filters][0][field]=category_id&searchCriteria[filter_groups][0][filters][0][value]=${this.cat_id}&searchCriteria[filter_groups][0][filters][0][condition_type]=eq`)
           .then(response => (this.products =response.data))
           .catch(error => {
             this.errors.push(error);
@@ -65,9 +85,11 @@ methods:{
   adToCart(product){
 
     this.cart.push(product);
-    console.log(this.cart);
    
-  }
+ 
+   
+  },
+
 }
 
 };

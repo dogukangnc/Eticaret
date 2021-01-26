@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-  <header> <Navbar /> </header>
+  <header> <Navbar @data="cat_id=$event" v-on:click="getCategoriesid(cat_id)"/>  </header>
+  
    <main>
-   <router-view></router-view>
+    <p>catid: {{cat_id}}</p>
+
+    <router-view :catid="cat_id"></router-view>
+
   </main> 
   </div>
 </template>
@@ -15,8 +19,22 @@ export default {
   name: 'App',
   components: {
         Navbar,
+       
       
-  }
+  },
+   data () {
+    return {
+      cat_id:"3"
+    }
+},
+methods:{
+  
+    getCategoriesid(cat_id){
+
+        this.$emit("data",cat_id);
+       
+   },
+}
 }
 </script>
 

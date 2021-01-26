@@ -2,14 +2,15 @@
  <nav>
 
   <div class="menu-item"><router-link to="/anasayfa">Home Page</router-link></div> 
-
-     <div v-for="categori in categories.children_data"
-    :key="categori.id">
-   
-         <Dropdown :title="categori.name" :items="categori.children_data" />
-
-       </div> 
     
+  
+     <div v-for="categori in categories.children_data"
+    :key="categori.id" v-on:click="getCategoriesid(gelenCatid)">
+   
+         <Dropdown @data="gelenCatid=$event" :title="categori.name" :items="categori.children_data" />
+                    
+       </div> 
+        <p>Gelen cat: {{gelenCatid}}</p>   
   <div class="menu-search">      
       <input type="text" placeholder="Search..">
       <i class="fa fa-search" aria-hidden="true"></i>
@@ -24,25 +25,30 @@
 import Dropdown from './Dropdown';
 import axios from "axios";
 
+
+
 axios.defaults.headers.common['Authorization'] = 'Bearer 66xif6wjoj74y5mpyd3rslfutnyens8e';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default {
   name: 'navbar',
   components: {
-    Dropdown
+    Dropdown,
   },
 
    created() {
+
       this.getCategories();
-
+     
     },
-
+  
+   
   data () {
     return {
      
       categories:[],
-      errors:[],     
+      errors:[],
+      gelenCatid:"", 
     }
   },
   methods:{
@@ -50,15 +56,21 @@ export default {
   getCategories() {
 
         axios
-          .get("https://store.therelated.com/rest/V1/categories")
+          .get("https://store.therelated.com/rest/V1/categories/")
           .then(response => (this.categories =response.data))
           .catch(error => {
             this.errors.push(error);
-            console.log(this.categories);   
-
+              
           });
+           
               
       },
+        getCategoriesid(cat_id){
+
+        this.$emit("data",cat_id);
+       
+   },
+     
    
     
 

@@ -6,25 +6,44 @@
     </svg>
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
-        <div v-for="(item, i) in items" :key="i" class="menu-item">
-          <router-link :to="'/'+ title +'/' + item.name">{{item.name }}</router-link> 
-          
+        <div v-for="item in items" :key="item.id" class="menu-item" v-on:click="Category(item.id)">
+          <router-link :to="'/'+ title +'/' + item.name">{{item.name}}</router-link>
         </div>
       </div>
     </transition>
+     
+   
   </div>
+  
+   
 </template>
 
 <script>
+
+
 export default {
   name: 'dropdown',
+
   props: ['title', 'items'],
   data () {
     return {
+      cat_id:"0",
       isOpen: false
     }
+   
+  },
+
+  methods:{
+        
+          Category(catid){
+           localStorage.setItem('categoryid',catid);
+          this.$emit("data",catid);
+          console.log(catid);
+  
+  }
   }
 }
+
 </script>
 
 <style>
