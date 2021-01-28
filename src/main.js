@@ -6,16 +6,18 @@ Vue.use(VueRouter);
 
 import Product from './components/Product';
 import Giris from './components/Giris';
-import Women from './components/Women';
+import Mainpage from './components/Mainpage';
+import ProductDetails from './components/ProductDetails';
+
 
 const routes=[
 
-  {path:'/anasayfa' , component: Product}, 
-  {path:'/Gear/Watches' , component: Product},
+ 
   {path:'/giris' , component: Giris},
-  {path:'/Urunsayfa' , component: Product},
-  {path:'/Women' , component: Women},
-  {path:'/Gear/Bags' , component: Product},
+  {path:'/:title/:id' , component: Product},
+  {path:'/' , component: Mainpage},
+  {path:'/anasayfa' , component: Mainpage},
+  {path:'/:sku' , component: ProductDetails},
 
 ]
   
