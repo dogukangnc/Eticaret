@@ -15,6 +15,14 @@
         :items="categori.children_data"
       />
     </div>
+    <div class="basket">
+      <router-link
+        to="/basket"
+        class="fa fa-shopping-cart"
+        aria-hidden="true"
+      ></router-link>
+    </div>
+
     <div class="menu-search">
       <input type="text" placeholder="Search.." />
       <i class="fa fa-search" aria-hidden="true"></i>
@@ -76,15 +84,10 @@ nav {
 nav .menu-item {
   color: #fff;
   padding: 10px;
-
   transition: 0.4s;
   border-radius: 8px;
-  background-color: #d0a0a0;
   display: block;
   float: left;
-  width: 120px;
-  margin-left: 15px;
-  display: inline-table;
 }
 nav .login {
   color: #fff;
@@ -94,13 +97,11 @@ nav .login {
 }
 nav .menu-item.active,
 nav .menu-item:hover {
-  background-color: #444;
-  border-bottom-color: #ff5858;
+  color: #632424;
 }
 nav .login.active,
 nav .login:hover {
-  background-color: #444;
-  border-bottom-color: #ff5858;
+  color: #632424;
 }
 nav .menu-item a {
   color: inherit;
@@ -119,11 +120,17 @@ nav .menu-search {
 nav .menu-search i {
   color: #fff;
 }
-nav .menu-search.active,
-nav .menu-search:hover {
-  background-color: #ff5858;
-}
+
 .menu-search i {
   margin-left: 3px;
+}
+.basket {
+  display: inline-table;
+}
+.basket a {
+  color: rgb(38, 206, 206);
+  font-size: 28px;
+  padding-top: 7px;
+  text-decoration: none;
 }
 </style>

@@ -37,7 +37,7 @@
         </div>
 
         <div class="price">{{ product_detail.price }}.00$</div>
-        <button class="Sepet">Add To Cart</button>
+        <button class="Sepet" v-on:click="adToCart(product_detail.sku)">Add To Cart</button>
       </div>
     </div>
   </div>
@@ -54,6 +54,7 @@ export default {
       product_detail: [],
       errors: [],
       data: "",
+      cart: [],
     };
   },
   created() {},
@@ -83,6 +84,10 @@ export default {
           this.errors.push(error);
         });
     },
+    adToCart(basket) {
+      this.cart.push(basket);
+      console.log(this.cart);
+    },
   },
 };
 </script>
@@ -92,7 +97,7 @@ export default {
   display: grid;
   grid-template-columns: 3fr 2fr;
   margin: auto;
-  background-color: aliceblue;
+  background-color: rgb(251 217 217);
 }
 
 .product-detail img {
@@ -109,7 +114,7 @@ export default {
   font-family: cursive;
 }
 .price {
-  padding: 20px;
+  padding-top: 20px;
   margin: 15px 0;
   font-size: 24px;
   color: #ff2877;
@@ -128,7 +133,7 @@ export default {
   text-align: center;
   cursor: pointer;
   font-size: 18px;
-  margin-left: 70px;
+  margin:0;
 }
 .Sepet:hover {
   background-color: #59ac5c;

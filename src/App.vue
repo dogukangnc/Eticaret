@@ -30,11 +30,12 @@ export default {
 }
 body {
   font-family: "montserrat", sans-serif;
+  margin: 0;
+
 }
 header {
   width: 100%;
   background-color: rgb(251 217 217);
-  padding-top: 25px;
 }
 main {
   margin-top: 20px;

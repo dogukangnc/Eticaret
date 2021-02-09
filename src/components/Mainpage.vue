@@ -50,6 +50,12 @@ main .firstbox{
   width: 1000px;
   height: 480px;
 }
+.firstbox a img{
+  
+  width: 320px;
+  height: 480px;
+  border-radius: 50%;
+}
 main .firstbox2{
   position: relative;
   width: 100%;
@@ -65,14 +71,9 @@ main .firstbox2 a{
    width: 1000px;
   height: 480px;
 }
-.firstbox a img{
-  
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-}
+
 .firstbox2 a img{
-    width: 480px;
+    width: 320px;
     height: 480px;
     border-radius: 50%;
     float: right;

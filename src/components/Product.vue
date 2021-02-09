@@ -107,7 +107,7 @@ export default {
 }
 .product-card {
   padding: 20px 20px;
- background-color: aliceblue;
+  background-color:rgb(251 217 217);
   display: inline-block;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;

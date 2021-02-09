@@ -8,6 +8,7 @@ import Product from './components/Product';
 import Giris from './components/Giris';
 import Mainpage from './components/Mainpage';
 import ProductDetails from './components/ProductDetails';
+import Basket from './components/Basket';
 
 
 const routes=[
@@ -16,8 +17,10 @@ const routes=[
   {path:'/giris' , component: Giris},
   {path:'/:title/:id' , component: Product},
   {path:'/' , component: Mainpage},
+  {path:'/basket' , component: Basket},
   {path:'/anasayfa' , component: Mainpage},
   {path:'/:sku' , component: ProductDetails},
+ 
 
 ]
   
